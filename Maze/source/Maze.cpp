@@ -1,5 +1,11 @@
-
 //SwitchPixelGameEngine v0.1 build pass
+//warning please use v0.1 
+// Copyright (C) 2020 tiansongyu
+//
+// This file is part of SwitchPixelGameEngine.
+
+// Last Updated: 2020/11/5
+
 #include"SwitchPixelGameEngine.h"
 #include<stack>
 #include<iostream>
