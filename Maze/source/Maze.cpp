@@ -11,7 +11,7 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-class Mazes :public SwitchGameEngine
+class Mazes :public SwitchPixelGameEngine
 {
 
 
@@ -151,7 +151,7 @@ protected:
 			m_nVisitedCells = 1;
 		}
 		//Fill(0, 0, ScreenWidth(), ScreenHeight(), L' ');
-        ClearAll();
+        ClearScreen();
 		for(int x =0;x<m_Width;x++)
 			for (int y = 0; y < m_Height; y++)
 			{
@@ -191,7 +191,7 @@ int main()
 	// Seed random number generator
 	srand(clock());
 	Mazes demo;
-	demo.ConstructConsole(1280, 720, 7, 7);
+	demo.ConstructConsole(10, 10);
 	demo.GameThread();
 	return 0;
 }
