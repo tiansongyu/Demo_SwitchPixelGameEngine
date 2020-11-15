@@ -5,6 +5,7 @@
 // This file is part of SwitchPixelGameEngine.
 
 // Last Updated: 2020/11/5
+#pragma once 
 
 #include"SwitchPixelGameEngine.h"
 #include<stack>
@@ -13,8 +14,6 @@
 using namespace std;
 class Mazes :public SwitchPixelGameEngine
 {
-
-
 public:
 	Mazes()
 	{
@@ -179,19 +178,10 @@ protected:
 			for (int py = 0; py < path_width; py++)
 				for (int px = 0; px < path_width; px++)
 					Draw(m_stack.top().first * (path_width + 1) + px, m_stack.top().second * (path_width + 1) + py,FG_GREEN); // Draw Cell
-		DrawString(1000,60,"迷宫生成算法");
+		DrawString(1100,60,"迷宫生成算法");
 		return true;
 	}
 
 private:
 };
 
-int main()
-{
-	// Seed random number generator
-	srand(clock());
-	Mazes demo;
-	demo.ConstructConsole(6, 6);
-	demo.GameThread();
-	return 0;
-}

@@ -1,3 +1,5 @@
+#pragma once 
+
 #include"SwitchPixelGameEngine.h"
 #include<string>
 #include<list>
@@ -31,10 +33,10 @@ public:
 
 	}
 private:
-	string map;
-	int nBlock = 8;
-	int nWight = 16;
-	int nHeight = 15;
+	string map_snake;
+	int nBlock_snake = 8;
+	int nWight_snake = 16;
+	int nHeight_snake = 15;
 	float speed_low = 0.2f;
 	food tmp_food;
 	enum direction
@@ -50,21 +52,21 @@ public:
 	bool OnUserCreate()override
 	{
 
-		map += "################";
-		map += "#.........#....#";
-		map += "#...#..........#";
-		map += "#..........#...#";
-		map += "#..............#";
-		map += "#..............#";
-		map += "#..............#";
-		map += "#..............#";
-		map += "#..#...........#";
-		map += "#..............#";
-		map += "#.....#........#";
-		map += "#...........#..#";
-		map += "#..............#";
-		map += "#..............#";
-		map += "################";
+		map_snake += "################";
+		map_snake += "#.........#....#";
+		map_snake += "#...#..........#";
+		map_snake += "#..........#...#";
+		map_snake += "#..............#";
+		map_snake += "#..............#";
+		map_snake += "#..............#";
+		map_snake += "#..............#";
+		map_snake += "#..#...........#";
+		map_snake += "#..............#";
+		map_snake += "#.....#........#";
+		map_snake += "#...........#..#";
+		map_snake += "#..............#";
+		map_snake += "#..............#";
+		map_snake += "################";
 
 		snake.push_front(body(6, 5));
 		snake.push_front(body(6, 6));
@@ -72,7 +74,7 @@ public:
 
 		tmp_food.x = 4;
 		tmp_food.y = 3;
-			return true;
+		return true;
 	}
 	bool OnUserUpdate(float fElapsedTime)override
 	{
@@ -103,15 +105,15 @@ public:
 			if ((old_direct + new_direct) % 2 == 1)
 				direct = RIGHT;
 		}
-		FillCircle(tmp_food.x*nBlock + (nBlock / 2),tmp_food.y*nBlock + (nBlock / 2),3,FG_RED);
+		FillCircle(tmp_food.x*nBlock_snake + (nBlock_snake / 2),tmp_food.y*nBlock_snake + (nBlock_snake / 2),3,FG_RED);
 
-		for(int x = 0;x<nWight;x++)
-			for(int y = 0;y<nHeight;y++)
+		for(int x = 0;x<nWight_snake;x++)
+			for(int y = 0;y<nHeight_snake;y++)
 			{
-				switch (map[y*nWight + x])
+				switch (map_snake[y*nWight_snake + x])
 				{
 					case '#':
-						Fill(x*nBlock, y*nBlock, (x + 1)*nBlock, (y + 1)*nBlock, FG_WHITE);
+						Fill(x*nBlock_snake, y*nBlock_snake, (x + 1)*nBlock_snake, (y + 1)*nBlock_snake, FG_WHITE);
 						break;
 					default:
 						break;
@@ -136,7 +138,7 @@ public:
 				{
 					if (tmp.x == x&&tmp.y == y)
 						continue;
-					if (map[y*nWight + x] != '#')
+					if (map_snake[y*nWight_snake + x] != '#')
 						get = true;
 				}
 			}
@@ -146,12 +148,12 @@ public:
 		for (auto tmp = snake.begin(); tmp != snake.end(); tmp++)
 		{
 
-			if (map[tmp->y*nWight + tmp->x] == '#')
+			if (map_snake[tmp->y*nWight_snake + tmp->x] == '#')
 			{
 				//dead and reset 
 				return dead();
 			}
-			Fill(tmp->x*nBlock, tmp->y*nBlock, (tmp->x + 1)*nBlock, (tmp->y + 1)*nBlock, FG_GREEN);
+			Fill(tmp->x*nBlock_snake, tmp->y*nBlock_snake, (tmp->x + 1)*nBlock_snake, (tmp->y + 1)*nBlock_snake, FG_GREEN);
 		}
 		speed_MAX += fElapsedTime;
 		if (speed_MAX > speed_low)
@@ -220,10 +222,3 @@ public:
 		return false;
 	}
 };
-int main()
-{
-	Snake snake_demo;
-	snake_demo.ConstructConsole(6, 6);
-	snake_demo.GameThread();
-	return 0;
-}

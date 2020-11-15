@@ -1,3 +1,4 @@
+#pragma once 
 #include"SwitchPixelGameEngine.h"
 #include<string>
 using namespace std;
@@ -252,13 +253,3 @@ public:
 		return true;
 	}
 };
-
-
-int main()
-{
-	srand(clock());
-	Tetris demo;
-	demo.ConstructConsole(6, 6);
-	demo.GameThread();
-	return 0;
-}

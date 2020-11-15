@@ -1,4 +1,9 @@
 
 *.map
+Maze/.vscode/settings.json
+Maze/.vscode/c_cpp_properties.json
+Snake/.vscode/settings.json
+Snake/.vscode/c_cpp_properties.json
 Tetris/.vscode/c_cpp_properties.json
-*.json
+Tetris/.vscode/settings.json
+.vscode/settings.json
